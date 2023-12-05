@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе "Vladyslav"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Стилі для темної теми */
+        body.dark-theme {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-theme button {
+            background-color: #555;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ласкаво просимо в кафе "Vladyslav"!</h1>
+
+    <button id="coffeeButton">Замовити каву</button>
+    <button id="teaButton">Замовити чай</button>
+    <button id="cakeButton">Замовити торт</button>
+
+    <div id="result">Ваш вибір буде відображений тут.</div>
+
+    <button id="lightThemeButton">Світла тема</button>
+    <button id="darkThemeButton">Темна тема</button>
+
+    <script>
+        function handleButtonClick(event) {
+            const buttonId = event.target.id;
+            document.getElementById('result').innerText = `Ви замовили: ${buttonId}`;
+            event.target.style.backgroundColor = '#4CAF50';
+            event.target.style.color = 'white';
+        }
+
+        function handleButtonMouseOver(event) {
+            event.target.style.color = 'blue';
+        }
+
+        function switchToLightTheme() {
+            document.body.classList.remove('dark-theme');
+        }
+
+        function switchToDarkTheme() {
+            document.body.classList.add('dark-theme');
+        }
+
+        const buttons = document.getElementsByTagName('button');
+        for (const button of buttons) {
+            button.addEventListener('click', handleButtonClick);
+            button.addEventListener('mouseover', handleButtonMouseOver);
+        }
+
+        const lightThemeButton = document.getElementById('lightThemeButton');
+        const darkThemeButton = document.getElementById('darkThemeButton');
+
+        lightThemeButton.addEventListener('click', switchToLightTheme);
+        darkThemeButton.addEventListener('click', switchToDarkTheme);
+    </script>
+</body>
+</html>
